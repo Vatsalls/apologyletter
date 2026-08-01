@@ -1,0 +1,6 @@
+{
+  "name": "Sunflower Love Notes & Gallery",
+  "description": "A cute sunflower and doodle-themed gift website for Vatsal's girlfriend featuring a photo gallery with adorable hand-drawn frames, a heartfelt love letter, interactive memory timeline, floating sunflower petals, and a message box sending notes directly to vatsalpatelwork20@gmail.com.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
