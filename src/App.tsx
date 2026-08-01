@@ -2,15 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroLetter } from './components/HeroLetter';
 import { GallerySection } from './components/GallerySection';
-import { MemoryTimeline } from './components/MemoryTimeline';
-import { LoveCoupons } from './components/LoveCoupons';
 import { MessageForm } from './components/MessageForm';
-import { SecretInboxModal } from './components/SecretInboxModal';
 import { Footer } from './components/Footer';
 
-import { PhotoItem, AdminData, LoveCoupon } from './types';
-import { DEFAULT_LETTER, INITIAL_PHOTOS, INITIAL_TIMELINE, INITIAL_COUPONS } from './data/initialData';
-import { musicBox } from './utils/audioSynth';
+import { PhotoItem, AdminData } from './types';
+import { DEFAULT_LETTER, INITIAL_PHOTOS } from './data/initialData';
 
 import heroImg from './assets/images/sunflower_doodle_hero_1785576747436.jpg';
 import envelopeImg from './assets/images/sunflower_envelope_seal_1785576762412.jpg';
@@ -18,11 +14,6 @@ import envelopeImg from './assets/images/sunflower_envelope_seal_1785576762412.j
 export default function App() {
   const [photos, setPhotos] = useState<PhotoItem[]>(INITIAL_PHOTOS);
   const [letterText, setLetterText] = useState<string>(DEFAULT_LETTER);
-  const [timeline] = useState(INITIAL_TIMELINE);
-  const [coupons, setCoupons] = useState<LoveCoupon[]>(INITIAL_COUPONS);
-
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [isSecretAdminOpen, setIsSecretAdminOpen] = useState(false);
   const [adminData, setAdminData] = useState<AdminData | null>(null);
 
   // Load / Track visitor count on initial load
@@ -46,11 +37,6 @@ export default function App() {
     } catch (err) {
       console.error('Failed to fetch admin data:', err);
     }
-  };
-
-  const handleToggleAudio = () => {
-    const newState = musicBox.toggle();
-    setIsAudioPlaying(newState);
   };
 
   const handleUpdateLetter = async (newText: string) => {
@@ -77,12 +63,6 @@ export default function App() {
     );
   };
 
-  const handleRedeemCoupon = (id: string) => {
-    setCoupons(
-      coupons.map((c) => (c.id === id ? { ...c, redeemed: true } : c))
-    );
-  };
-
   const handleSendMessage = async (
     senderName: string,
     message: string,
@@ -99,21 +79,11 @@ export default function App() {
     return data;
   };
 
-  const handleOpenAdmin = () => {
-    fetchAdminData();
-    setIsSecretAdminOpen(true);
-  };
-
   return (
     <div className="min-h-screen paper-bg font-body text-[#4A3E3D] relative overflow-x-hidden">
-      
+
       {/* Sticky Header Navigation */}
-      <Navbar
-        onOpenSecretAdmin={handleOpenAdmin}
-        isAudioPlaying={isAudioPlaying}
-        toggleAudio={handleToggleAudio}
-        unreadCount={adminData?.messages?.filter((m) => !m.read).length || 0}
-      />
+      <Navbar />
 
       <main className="space-y-6">
         {/* Landing Hero & Interactive Letter */}
@@ -131,25 +101,12 @@ export default function App() {
           onLikePhoto={handleLikePhoto}
         />
 
-        {/* Memory Timeline */}
-        <MemoryTimeline timeline={timeline} />
-
-        {/* Redeemable Love Coupons */}
-        <LoveCoupons coupons={coupons} onRedeem={handleRedeemCoupon} />
-
         {/* Message Form (Sends to Vatsal's Email: vatsalpatelwork20@gmail.com) */}
         <MessageForm onSendMessage={handleSendMessage} />
       </main>
 
       {/* Footer */}
-      <Footer onOpenSecretAdmin={handleOpenAdmin} />
-
-      {/* Secret Inbox & Visitor Stats Modal for Vatsal */}
-      <SecretInboxModal
-        isOpen={isSecretAdminOpen}
-        onClose={() => setIsSecretAdminOpen(false)}
-        adminData={adminData}
-      />
+      <Footer />
 
     </div>
   );
