@@ -7,19 +7,12 @@ interface MessageFormProps {
 }
 
 export const MessageForm: React.FC<MessageFormProps> = ({ onSendMessage }) => {
-  const [senderName, setSenderName] = useState('Your Sunflower 🌻');
+  const [senderName, setSenderName] = useState('Your Sunflower ');
   const [message, setMessage] = useState('');
-  const [selectedMood, setSelectedMood] = useState('😊');
+  const [selectedMood, setSelectedMood] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [sentSuccess, setSentSuccess] = useState(false);
 
-  const moods = [
-    { emoji: '😊', label: 'Happy' },
-    { emoji: '🥰', label: 'In Love' },
-    { emoji: '💖', label: 'Excited' },
-    { emoji: '🧸', label: 'Cozy' },
-    { emoji: '🌻', label: 'Sunshine' },
-  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,19 +39,19 @@ export const MessageForm: React.FC<MessageFormProps> = ({ onSendMessage }) => {
 
         {/* Top Decorative Tape */}
         <div className="washi-tape-yellow absolute -top-4 left-8 px-6 py-1 font-handwritten text-sm text-amber-900 font-bold">
-          DIRECT NOTE TO VATSAL 💌
+          DIRECT NOTE  
         </div>
 
         {/* Section Header */}
         <div className="text-center my-4">
           <div className="w-16 h-16 rounded-full bg-[#FEF08A] border-2 border-[#CA8A04] mx-auto flex items-center justify-center text-3xl shadow-sm mb-3 animate-float">
-            🌻
+            
           </div>
           <h2 className="font-cute text-3xl sm:text-4xl font-bold text-[#78350F]">
-            Write A Note For Vatsal
+            Write A Note 
           </h2>
           <p className="font-handwritten text-xl sm:text-2xl text-[#92400E] mt-1">
-            Write anything you want! It'll be saved just for Vatsal to read 💛
+            Write anything you want
           </p>
         </div>
 
@@ -66,26 +59,7 @@ export const MessageForm: React.FC<MessageFormProps> = ({ onSendMessage }) => {
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
 
           {/* Sender Name & Mood */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block font-cute text-sm font-bold text-amber-900 mb-1">
-                Your Cute Name / Nickname
-              </label>
-              <input
-                type="text"
-                required
-                value={senderName}
-                onChange={(e) => setSenderName(e.target.value)}
-                placeholder="e.g. Your Sunflower 🌻"
-                className="w-full p-3 bg-white border-2 border-amber-300 rounded-2xl font-handwritten text-2xl text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-400"
-              />
-            </div>
-
-            {/* Mood Selector */}
-            <div>
-              <label className="block font-cute text-sm font-bold text-amber-900 mb-1">
-                How Are You Feeling Today?
-              </label>
+       
               <div className="flex items-center gap-2 pt-1">
                 {moods.map((m) => (
                   <button
@@ -109,7 +83,7 @@ export const MessageForm: React.FC<MessageFormProps> = ({ onSendMessage }) => {
           {/* Message Area */}
           <div>
             <label className="block font-cute text-sm font-bold text-amber-900 mb-1">
-              Your Message For Vatsal
+              Your Message 
             </label>
             <textarea
               required
@@ -130,12 +104,12 @@ export const MessageForm: React.FC<MessageFormProps> = ({ onSendMessage }) => {
             {isSending ? (
               <>
                 <Sun className="w-5 h-5 animate-spin" />
-                <span>Sending to Vatsal...</span>
+                <span>Sending...</span>
               </>
             ) : (
               <>
                 <Send className="w-5 h-5" />
-                <span>Send Message To Vatsal 🌻</span>
+                <span>Send Message</span>
               </>
             )}
           </button>
