@@ -11,15 +11,15 @@ export const Footer: React.FC = () => {
         </div>
 
         <h3 className="font-cute text-2xl font-bold text-amber-950">
-          Handcrafted With Infinite Love For You
+          Just Cute Photo Gallery for you 
         </h3>
 
         <p className="font-handwritten text-2xl text-amber-900 max-w-lg mx-auto">
-          "You are my sunshine, my only sunshine. You make me happy when skies are gray." 💛
+          "This was the small present for you, ik u will still hate me but i just wanna say I lOVE YOU BHUMI "💛
         </p>
 
         <div className="pt-4 flex items-center justify-center gap-3 text-xs font-cute text-amber-800 border-t border-amber-300/60 max-w-md mx-auto">
-          <span>Created by Vatsal with 💖 & Sunflowers</span>
+          <span>Created by Vatsal</span>
         </div>
 
       </div>
