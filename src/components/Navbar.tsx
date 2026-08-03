@@ -41,9 +41,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSettings }) => {
           </div>
           <div>
             <h1 className="font-cute text-xl font-bold text-[#854D0E] tracking-tight flex items-center gap-1">
-              Sunshine & Love <Heart className="w-4 h-4 fill-amber-500 text-amber-500 inline animate-bounce" />
+              To Bhumieeeeeee <Heart className="w-4 h-4 fill-amber-500 text-amber-500 inline animate-bounce" />
             </h1>
-            <p className="font-handwritten text-xs text-[#A16207]">For My Dearest Sunflower</p>
+            <p className="font-handwritten text-xs text-[#A16207]">LOML</p>
           </div>
         </div>
 
